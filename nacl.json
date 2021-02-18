@@ -1,0 +1,512 @@
+[
+  {
+    "group": "guest",
+    "permissions": [
+      {
+        "resource": "users",
+        "methods": ["POST", "GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "users/reset",
+        "methods": ["POST"],
+        "action": "allow"
+      },
+      {
+        "resource": "users/list",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "users/resetConfirm",
+        "methods": ["POST"],
+        "action": "allow"
+      },
+      {
+        "resource": "users/login",
+        "methods": ["POST"],
+        "action": "allow"
+      },
+      {
+        "resource": "users/validate",
+        "methods": ["POST"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch/:id",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch/:id/skill",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "franchise",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "franchise/:id",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "educational-institution",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "educational-institution/:id",
+        "methods": ["GET"],
+        "action": "allow"
+      }
+    ]
+  },
+  {
+    "group": "aspirant",
+    "permissions": [
+      {
+        "resource": "users/logout",
+        "methods": ["POST"],
+        "action": "allow"
+      },
+      {
+        "resource": "users/:id",
+        "methods": ["PUT"],
+        "action": "allow"
+      },
+      {
+        "resource": "users/:id/password",
+        "methods": ["PUT"],
+        "action": "allow"
+      },
+      {
+        "resource": "users",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "franchise",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "franchise/recruiter/:id",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "company/:id",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "company",
+        "methods": ["GET", "POST"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch/:id",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "files",
+        "methods": ["POST"],
+        "action": "allow"
+      },
+      {
+        "resource": "franchise/:id",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch/:id/aspirant",
+        "methods": ["POST", "DELETE"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch/:id/aspirant/:idCandidate",
+        "methods": ["POST", "GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch/aspirant/:id",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch/:id/skill",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "skill",
+        "methods": ["GET", "POST"],
+        "action": "allow"
+      },
+      {
+        "resource": "location",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "interviews/:id",
+        "methods": ["GET", "PUT"],
+        "action": "allow"
+      },
+      {
+        "resource": "interviews/candidate",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "interviews/recruiter/:id",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "candidates/:id/skill/:idSkill",
+        "methods": ["POST", "DELETE"],
+        "action": "allow"
+      },
+      {
+        "resource": "candidates/:id/skill",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "educational-institution",
+        "methods": ["GET", "POST"],
+        "action": "allow"
+      },
+      {
+        "resource": "educational-institution/:id",
+        "methods": ["GET"],
+        "action": "allow"
+      }
+    ]
+  },
+  {
+    "group": "recruiter",
+    "permissions": [
+      {
+        "resource": "users/logout",
+        "methods": ["POST"],
+        "action": "allow"
+      },
+      {
+        "resource": "users/:id",
+        "methods": ["PUT"],
+        "action": "allow"
+      },
+      {
+        "resource": "users/:id/password",
+        "methods": ["PUT"],
+        "action": "allow"
+      },
+      {
+        "resource": "users/*",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "candidates/*",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "franchise",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "franchise/:id",
+        "methods": ["PUT", "GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "franchise/recruiter/:id",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "franchise/:id/users/:idRecruiter",
+        "methods": ["DELETE"],
+        "action": "allow"
+      },      
+      {
+        "resource": "franchise/:id/users",
+        "methods": ["POST"],
+        "action": "allow"
+      },      
+      {
+        "resource": "company/:id",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "company",
+        "methods": ["GET", "POST"],
+        "action": "allow"
+      },
+      {
+        "resource": "company/:id/contact",
+        "methods": ["PUT"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch",
+        "methods": ["POST", "GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch/:id",
+        "methods": ["PUT", "DELETE", "GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch/:id/recruiter",
+        "methods": ["POST"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch/:id/aspirant",
+        "methods": ["PUT"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch/:id/aspirant/:idCandidate",
+        "methods": ["PUT", "POST", "GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch/:id/recruiter/:idRecruiter",
+        "methods": ["DELETE"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch/:id/recruiter/:idRecruiter/action",
+        "methods": ["POST"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch/aspirant/:id",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch/:id/skill/:idSkill",
+        "methods": ["POST", "DELETE"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch/:id/skill",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch/:id/interviews",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "skill",
+        "methods": ["POST", "GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "skill/:id",
+        "methods": ["DELETE", "PUT"],
+        "action": "allow"
+      },
+      {
+        "resource": "location",
+        "methods": ["POST", "GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "files",
+        "methods": ["POST"],
+        "action": "allow"
+      },
+      {
+        "resource": "interviews/:id",
+        "methods": ["GET", "PUT"],
+        "action": "allow"
+      },
+      {
+        "resource": "interviews/recruiter",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "stats/general",
+        "methods": ["GET"],
+        "action": "allow"
+      }
+    ]
+  },
+  {
+    "group": "contact",
+    "permissions": [
+      {
+        "resource": "users",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "users/:id",
+        "methods": ["PUT"],
+        "action": "allow"
+      },
+      {
+        "resource": "users/:id/password",
+        "methods": ["PUT"],
+        "action": "allow"
+      },
+      {
+        "resource": "candidates/:id/skill",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "company",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "company/:id",
+        "methods": ["PUT", "GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch",
+        "methods": [ "GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch/:id",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch/:id/interviews",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch/:id/aspirant/:idCandidate",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch/aspirant/:idCandidate",
+        "methods": ["GET"],
+        "action": "allow"
+      }
+    ]
+  },
+  {
+    "group": "admin",
+    "permissions": [
+      {
+        "resource": "franchise",
+        "methods": ["POST", "GET", "PUT"],
+        "action": "allow"
+      },
+      {
+        "resource": "franchise/:id",
+        "methods": ["DELETE", "GET", "PUT"],
+        "action": "allow"
+      },
+      {
+        "resource": "franchise/:id/owner",
+        "methods": ["PUT"],
+        "action": "allow"
+      },
+      {
+        "resource": "franchise/recruiter/:id",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "franchise/:id/users",
+        "methods": ["POST"],
+        "action": "allow"
+      },    
+      {
+        "resource": "company",
+        "methods": ["POST", "GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "company/:id",
+        "methods": ["DELETE", "GET", "PUT"],
+        "action": "allow"
+      },
+      {
+        "resource": "company/:id/contact",
+        "methods": ["PUT"],
+        "action": "allow"
+      },
+      {
+        "resource": "users/*",
+        "methods": "*",
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "jobsearch/:id",
+        "methods": ["GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "skill",
+        "methods": ["POST", "GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "skill/:id",
+        "methods": ["PUT", "DELETE"],
+        "action": "allow"
+      },
+      {
+        "resource": "location",
+        "methods": ["POST", "GET"],
+        "action": "allow"
+      },
+      {
+        "resource": "location/:id",
+        "methods": ["PUT"],
+        "action": "allow"
+      },
+      {
+        "resource": "files",
+        "methods": ["POST"],
+        "action": "allow"
+      },
+      {
+        "resource": "stats/general",
+        "methods": ["GET"],
+        "action": "allow"
+      }
+    ]
+  }
+]

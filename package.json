@@ -1,0 +1,35 @@
+{
+  "name": "backend",
+  "version": "0.1.0",
+  "description": "API Backend",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "local": "nodemon --inspect=0.0.0.0:9229 src/index.js",
+    "test": "jest --coverage",
+    "integration": "jest -c jest.config.integration.js --runInBand --detectOpenHandles"
+  },
+  "author": "Federico Morales Otero",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.1.0",
+    "nodemon": "^1.18.10",
+    "supertest": "^4.0.2"
+  },
+  "dependencies": {
+    "bcryptjs": "2.4.3",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-acl": "^2.0.8",
+    "generate-password": "^1.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.17.1",
+    "nodemailer": "^6.3.0",
+    "swagger-ui-express": "^4.0.2",
+    "xid-js": "^1.0.1",
+    "express-file-store": "1.0.3",
+    "aws-sdk": "^2.397.0",
+    "multer": "^1.4.1"
+  }
+}

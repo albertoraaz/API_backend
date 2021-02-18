@@ -1,0 +1,99 @@
+version: '3.7'
+x-common-variables: &common-variables
+  NODE_ENV: local
+  DB_MAIN_HOST: mysql
+  PRIVATE_KEY: privatekey
+  DB_MAIN_USER: root
+  DB_MAIN_PASS: root
+  DB_MAIN_NAME: main_db
+  GMAIL_USER: 'tessiecompany@gmail.com'
+  GMAIL_PASS: 'tessieplataforma5'
+  FRONT_LINK_URL: http://front.outsidecube.com:8080/account
+  AWS_ACCESS_KEY_ID: anykey
+  AWS_SECRET_ACCESS_KEY: anysecret
+  AWS_REGION: us-east-1
+  TTL: 86400000
+  SHORT_TTL: 86400
+  S3_BUCKET: files
+services:
+  local:
+    build:
+      context: .
+    image: backend
+    volumes:
+      - ./src:/app/src
+    container_name: backend_local
+    environment: *common-variables
+    ports:
+      - '3000:3000'
+      - '9229:9229'
+    external_links:
+      - database_mysql:mysql
+    networks:
+      - default
+      - database
+    tty: true
+    entrypoint: ['npm', 'run', 'local']
+  test:
+    build:
+      context: .
+    image: backend
+    volumes:
+      - ./src:/app/src
+      - ./coverage/unit:/app/coverage
+    container_name: backend_test
+    environment: *common-variables
+    tty: true
+    entrypoint: ['npm', 'test']
+  integration-test:
+    build:
+      context: .
+    image: backend
+    volumes:
+      - ./src:/app/src
+      - ./coverage/integration:/app/coverage
+    container_name: backend_integration
+    environment:
+      <<: *common-variables
+      NODE_ENV: test
+    external_links:
+      - database_mysql:mysql
+    networks:
+      - default
+      - database
+    tty: true
+    entrypoint: ['npm', 'run', 'integration']
+  localstack:
+    image: localstack/localstack
+    container_name: backend_localstack
+    ports:
+      - 4572:4572
+      - 8081:8081
+    environment:
+      - SERVICES=s3
+      - DEFAULT_REGION=us-east-1
+      - PORT_WEB_UI=8081
+      - DEBUG=1
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - DATA_DIR=/tmp/localstack/data
+    volumes:
+      - '/private/tmp/localstack:/tmp/localstack'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+  setup:
+    image: mesosphere/aws-cli
+    container_name: backend_setup
+    volumes:
+      - ./setup:/setup
+    environment:
+      AWS_ACCESS_KEY_ID: anykey
+      AWS_SECRET_ACCESS_KEY: anysecret
+      AWS_DEFAULT_REGION: us-east-1
+    depends_on:
+      - localstack
+    entrypoint: ['']
+    command: ['/setup/setup.sh']
+networks:
+  default:
+    name: backend
+  database:
+    external: true

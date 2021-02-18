@@ -1,0 +1,598 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "0.1.0",
+    "title": "Api",
+    "description": "Backend",
+    "license": {
+      "name": "",
+      "url": ""
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "tags": [
+    {
+      "name": "user",
+      "description": "User endpoints"
+    }
+  ],
+  "paths": {
+    "/v1/user": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "description": "Create user",
+        "summary": "Signup as new user",
+        "requestBody": {
+          "description": "User body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "password": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "firstName": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "type": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "username": {
+                    "type": "string",
+                    "required": false
+                  },
+                  "profileDescription": {
+                    "type": "string",
+                    "required": false
+                  },
+                  "profilePicture": {
+                    "type": "string",
+                    "required": false
+                  },
+                  "idLocation": {
+                    "type": "number",
+                    "required": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success!"
+          },
+          "400": {
+            "description": "Missing fields or bad type"
+          },
+          "409": {
+            "description": "User already exists"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "description": "v1/user?id={id} OR email={email}",
+        "summary": "Get a specific user by id or email",
+        "parameters": [
+          {
+            "name": "access-token",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "description": "email",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success!"
+          },
+          "403": {
+            "description": "Bad credentials"
+          },
+          "404": {
+            "description": "User not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/user/validate": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "description": "Validate User account",
+        "summary": "Validate User account",
+        "requestBody": {
+          "description": "User body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "required": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success!"
+          },
+          "400": {
+            "description": "Missing fields or bad type"
+          },
+          "401": {
+            "description": "Bad credentials"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/user/reset": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "description": "Reset User pass",
+        "summary": "Reset User pass",
+        "requestBody": {
+          "description": "User body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "required": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success!"
+          },
+          "400": {
+            "description": "Missing fields or bad type"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/user/resetConfirm": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "description": "Reset Confirm User pass",
+        "summary": "Reset Confirm User pass",
+        "requestBody": {
+          "description": "User body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "password": {
+                    "type": "string",
+                    "required": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success!"
+          },
+          "400": {
+            "description": "Missing fields or bad type"
+          },
+          "401": {
+            "description": "Expired token"
+          },
+          "404": {
+            "description": "Token not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/user/login": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "description": "Login with credentials and get token",
+        "summary": "Login with credentials and get token",
+        "requestBody": {
+          "description": "User body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "password": {
+                    "type": "string",
+                    "required": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success!"
+          },
+          "400": {
+            "description": "Missing fields or bad type"
+          },
+          "401": {
+            "description": "Bad credentials"
+          },
+          "404": {
+            "description": "User not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/user/logout": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "description": "Logout with token",
+        "summary": "Logout with token",
+        "parameters": [
+          {
+            "name": "access-token",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success!"
+          },
+          "403": {
+            "description": "Bad credentials"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/user/exists": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "description": "Get a boolean depending if the user exists",
+        "summary": "Get a boolean depending if the user exists",
+        "parameters": [
+          {
+            "name": "access-token",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "description": "email",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success!"
+          },
+          "403": {
+            "description": "Bad credentials"
+          },
+          "404": {
+            "description": "User not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/user/list": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "description": "Get all user that include 'text' in first, last or email. Returns all user if text is not included.",
+        "summary": "Get all user that include 'text' in first, last or email",
+        "parameters": [
+          {
+            "name": "access-token",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "text",
+            "in": "query",
+            "description": "text",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "length of result, page is required"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "limit is required"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Type of sort: ASC, DESC"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success!"
+          },
+          "400": {
+            "description": "Missing fields or bad type"
+          },
+          "403": {
+            "description": "Bad credentials"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/user/{id}": {
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "description": "Update a user",
+        "summary": "Update a user",
+        "parameters": [
+          {
+            "name": "access-token",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "params",
+            "description": "Id user",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "user body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "firstName": {
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "type": "string"
+                  },
+                  "idLocation": {
+                    "type": "number"
+                  },
+                  "profileDescription": {
+                    "type": "string"
+                  },
+                  "profilePicture": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success!"
+          },
+          "400": {
+            "description": "Missing fields or bad type"
+          },
+          "401": {
+            "description": "Invalid credentials"
+          },
+          "403": {
+            "description": "You are not authorized to access this resource"
+          },
+          "404": {
+            "description": "Company not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/v1/user/{id}/password": {
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "description": "Update user password",
+        "summary": "Update user password",
+        "parameters": [
+          {
+            "name": "access-token",
+            "in": "header",
+            "description": "access-token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "params",
+            "description": "Id user",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "user body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "currentPassword": {
+                    "type": "string"
+                  },
+                  "newPassword": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success!"
+          },
+          "400": {
+            "description": "Missing fields or bad type"
+          },
+          "401": {
+            "description": "Invalid credentials"
+          },
+          "403": {
+            "description": "You are not authorized to access this resource"
+          },
+          "404": {
+            "description": "Company not found"
+          },
+          "409": {
+            "description": "Error al repetir la contraseña"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  }
+}
