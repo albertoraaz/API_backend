@@ -20,6 +20,10 @@ steps:
   displayName: Run Unit Tests
   inputs:
     dockerComposeCommand: 'up test'
+- task: DockerCompose@0
+  displayName: Run Integration Tests
+  inputs:
+    dockerComposeCommand: 'up integration-test'
 - task: Docker@2
   displayName: Push an image
   inputs: 
