@@ -18,7 +18,7 @@ steps:
 - task: DockerCompose@0
   displayName: Run Unit Tests
   inputs:
-    dockerComposeCommand: 'docker network create database'
+    dockerComposeCommand: 'up test'
 - task: Docker@2
   displayName: Push an image
   inputs: 
