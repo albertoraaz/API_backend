@@ -15,6 +15,7 @@ steps:
     Dockerfile: Dockerfile
     tags: $(build.buildId)
 - script: docker login demo.goharbor.io/ --username=albertoraaz --password=Ven320wl8ven!
+- script: docker network create database
 - task: DockerCompose@0
   displayName: Run Unit Tests
   inputs:
