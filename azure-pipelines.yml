@@ -24,9 +24,9 @@ steps:
   displayName: Run Integration Tests
   inputs:
     dockerComposeCommand: 'up integration-test'
+  condition: succeededOrFailed()
 - task: Docker@2
   displayName: Push an image
   inputs: 
     repository: demo.goharbor.io/backend/repository
-  condition: succeededOrFailed()
 - script: docker push demo.goharbor.io/backend/repository:$(build.buildId) 
