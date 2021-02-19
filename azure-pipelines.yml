@@ -11,7 +11,7 @@ steps:
   inputs:
     command: build
     repository: backend/repository
-    containerRegistry: harbor-backend
+    containerRegistry: harbor-bk
     Dockerfile: Dockerfile
     tags: $(build.buildId)
 - script: docker login demo.goharbor.io/ --username=albertoraaz --password=Ven320wl8ven!
