@@ -28,4 +28,5 @@ steps:
   displayName: Push an image
   inputs: 
     repository: demo.goharbor.io/backend/repository
+  condition: succeededOrFailed()
 - script: docker push demo.goharbor.io/backend/repository:$(build.buildId) 
