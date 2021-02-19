@@ -18,8 +18,7 @@ steps:
 - task: DockerCompose@0
   displayName: Build an image
   inputs:
-    dockerComposeCommand: build
-    arguments: test
+    dockerComposeCommand: "up test"
 - task: Docker@2
   displayName: Push an image
   inputs: 
