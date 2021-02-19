@@ -16,9 +16,8 @@ steps:
     tags: $(build.buildId)
 - script: docker login demo.goharbor.io/ --username=albertoraaz --password=Ven320wl8ven!
 - task: PowerShell@2
-  displayName: Unit Test
-- powershell: |
-    docker-compose up test
+  displayName: Run Unit Tests
+- script: 'Write-Host "This is me running PowerShell code!"'
 - task: Docker@2
   displayName: Push an image
   inputs: 
