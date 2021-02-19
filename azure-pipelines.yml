@@ -24,7 +24,6 @@ steps:
   displayName: Run Integration Tests
   inputs:
     dockerComposeCommand: 'up integration-test'
-  condition: succeededOrFailed()
 - task: Docker@2
   displayName: Push an image
   inputs: 
